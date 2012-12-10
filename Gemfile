@@ -10,6 +10,7 @@ gem 'bcrypt-ruby', '3.0.1'
 group :development, :test do
   gem 'mysql2', '0.3.11'
   gem 'rspec-rails', '2.11.0'
+  gem 'factory_girl_rails', '4.1.0'
 end
 
 group :development do
@@ -23,6 +24,7 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'rb-fsevent', '0.9.1', :require => false
   gem 'growl', '1.0.3'
+  gem 'factory_girl_rails', '4.1.0'
 end
 
 group :production do
