@@ -6,15 +6,27 @@ gem 'bootstrap-sass', '2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development do
+group :development, :test do
   gem 'mysql2', '0.3.11'
   gem 'rspec-rails', '2.11.0'
+end
+
+group :development do
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
   gem 'annotate', '2.5.0'
 end
 
+group :test do
+  gem 'capybara', '1.1.2'
+  gem 'rb-fsevent', '0.9.1', :require => false
+  gem 'growl', '1.0.3'
+end
+
+group :production do
+  gem 'pg', '0.12.2'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -44,14 +56,3 @@ gem 'jquery-rails', '2.0.2'
 
 # To use debugger
 # gem 'debugger'
-
-group :test do
-  gem 'capybara', '1.1.2'
-  gem 'mysql2', '0.3.11'
-  gem 'rb-fsevent', '0.9.1', :require => false
-  gem 'growl', '1.0.3'
-end
-
-group :production do
-  gem 'pg', '0.12.2'
-end
