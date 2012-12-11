@@ -70,6 +70,7 @@ describe "User pages" do
         it { should_not have_content("* Password confirmation can't be blank") }
         it { should_not have_content("* Email can\'t be blank") }
         it { should_not have_content("* Email is invalid") }
+        it { should have_link("Sign out") }
       end
     end
   end
