@@ -31,7 +31,7 @@ describe "User pages" do
       describe "after submission" do
         before { click_button submit }
 
-        it { should_not have_selector('div', text: 'Welcome to the Sample App!') }
+        it { should_not have_selector('div.alert.alert-success', text: 'Welcome to the Sample App!') }
         it { should have_selector('title', text: 'Sign up') }
         it { should have_content('error') }
         it { should have_content("* Password can\'t be blank") }
@@ -59,7 +59,8 @@ describe "User pages" do
       describe "after submission" do
         before { click_button submit }
 
-        it { should have_selector('div', text: 'Welcome to the Sample App!') }
+        it { should have_selector('div.alert.alert-success',
+                                  text: 'Welcome to the Sample App!') }
         it { should_not have_selector('title', text: 'Sign up') }
         it { should_not have_content('error') }
         it { should_not have_content("* Password can\'t be blank") }
