@@ -15,3 +15,11 @@ test:
   username: root
   password:
   socket: /tmp/mysql.sock
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: sample_app_production
+  pool: 5
+  username: myapp
+  password:
