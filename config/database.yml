@@ -7,7 +7,7 @@ development:
   password:
   socket: /tmp/mysql.sock
 
-test:
+test: &test
   adapter: mysql2
   encoding: utf8
   database: sample_app_test
@@ -23,3 +23,6 @@ production:
   pool: 5
   username: myapp
   password:
+
+cucumber:
+  <<: *test
