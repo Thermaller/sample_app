@@ -7,10 +7,10 @@ def valid_signin(user)
 end
 
 def valid_signup
-  fill_in "Name",                   with: "Paul Bonneau"
-  fill_in "Email",                  with: "thermaller@comcast.net"
-  fill_in "Password",               with: "foobar"
-  fill_in "Password confirmation",  with: "foobar"
+  fill_in "Name",             with: "Paul Bonneau"
+  fill_in "Email",            with: "thermaller@comcast.net"
+  fill_in "Password",         with: "foobar"
+  fill_in "Confirm password", with: "foobar"
 end
 
 def sign_in(user)
