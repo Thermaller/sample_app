@@ -1,12 +1,14 @@
 <% provide(:title, "All users") %>
 <h1><%= yield(:title) %></h1>
+<%= will_paginate %>
 
 <ul class="users">
-  <% @users.each do |u| %>
-    <li>
-      <%= gravatar_for u, size: 52 %>
-      <%= link_to u.name, u %>
-      </li>
-    <% end %>
+  <% @users.each do |user| %>
+      <li>
+      <%= gravatar_for user, size: 52 %>
+      <%= link_to user.name, user %>
+    </li>
+  <% end %>
 </ul>
 
+<%= will_paginate %>
