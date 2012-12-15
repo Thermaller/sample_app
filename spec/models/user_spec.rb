@@ -26,9 +26,20 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:admin) }
 
   it { should be_valid }
   it { should_not be_admin }
+
+  describe "accessible attributes" do
+    it "should not allow access to admin" do
+      expect do
+        User.new(name: "Test User", email: "testuser@example.com",
+                 password: "foobar", password_confirmation: "foobar",
+                 admin: false)
+      end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+  end
 
   describe "with admin attribute set to 'true'" do
     before do
