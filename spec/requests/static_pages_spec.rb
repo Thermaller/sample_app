@@ -16,6 +16,18 @@ describe "Static pages" do
 
     it_should_behave_like "all static pages"
     it { should_not have_title '| Home' }
+    it { should have_link("Sign up now!") }
+
+    describe "after sign in" do
+      let(:user) { FactoryGirl.create(:user) }
+
+      before do
+        sign_in(user)
+        click_link("Home")
+      end
+   
+      it { should_not have_link("Sign up now!") }
+    end
   end
 
   describe "Help page" do

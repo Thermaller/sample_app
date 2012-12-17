@@ -13,6 +13,14 @@ def valid_signup
   fill_in "Confirm password", with: "foobar"
 end
 
+def sign_in(user_name, email, password)
+  visit signin_path
+  fill_in "Name",             with: user_name
+  fill_in "Email",            with: email
+  fill_in "Password",         with: password
+  fill_in "Confirm password", with: password
+end
+
 def sign_in(user)
   visit signin_path
   valid_signin(user)
