@@ -58,6 +58,23 @@ describe "Authentication" do
           it "should render the desired protected page" do
             page.should have_title("Edit user")
           end
+
+          describe "and attempting to vist the edit page again" do
+            before { visit edit_user_path(user) }
+
+            it { should have_title("Edit user") }
+          end
+
+          describe "after signing in again" do
+            before do
+              delete signout_path
+              sign_in(user)
+            end
+
+            it "should render the default (profile) page" do
+              page.should have_title(user.name)
+            end
+          end
         end
       end
 
