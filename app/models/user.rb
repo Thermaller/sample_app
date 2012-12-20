@@ -24,6 +24,13 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false}
 
+  def feed
+    #
+    # This is preliminary. See "Following users" for the full implementation.
+    #
+    Micropost.where("user_id = ?", id)
+  end
+
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
