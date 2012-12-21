@@ -29,21 +29,28 @@ describe "Static pages" do
       it { should_not have_link("Sign up now!") }
     end
 
-    describe "for signed-in users" do
+    describe "feed for signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
-        FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")
+        50.times do |i|
+          strmp = "mp #{i}"
+          FactoryGirl.create(:micropost, user: user, content: strmp)
+        end
         sign_in user
         visit root_path
       end
       let (:cmp) { user.feed.count }
       let (:strcmp) { cmp == 0 || cmp > 1 ? "microposts" : "micropost" }
       let (:str) { "#{cmp} #{strcmp}" }
+      after(:all)  { user.feed.delete_all }
+
+      it "should have pagination" do
+        page.should have_selector('div.pagination')
+      end
 
       it "should render the user's feed" do
-        user.feed.each do |item|
-          page.should have_selector("li##{item.id}", text: item.content)
+        user.feed.paginate(page: 1).each do |mp|
+          page.should have_selector("li##{mp.id}", text: mp.content)
         end
       end
 
