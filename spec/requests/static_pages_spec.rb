@@ -37,11 +37,18 @@ describe "Static pages" do
         sign_in user
         visit root_path
       end
+      let (:cmp) { user.microposts.count }
+      let (:strcmp) { cmp == 0 || cmp > 1 ? "microposts" : "micropost" }
+      let (:str) { "#{cmp} #{strcmp}" }
 
       it "should render the user's feed" do
         user.feed.each do |item|
           page.should have_selector("li##{item.id}", text: item.content)
         end
+      end
+
+      it "should show the correct number of microposts" do
+        page.should have_selector("span", text: str)
       end
     end
   end
