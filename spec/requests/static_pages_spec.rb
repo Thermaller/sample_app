@@ -37,7 +37,7 @@ describe "Static pages" do
         sign_in user
         visit root_path
       end
-      let (:cmp) { user.microposts.count }
+      let (:cmp) { user.feed.count }
       let (:strcmp) { cmp == 0 || cmp > 1 ? "microposts" : "micropost" }
       let (:str) { "#{cmp} #{strcmp}" }
 

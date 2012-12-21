@@ -82,6 +82,7 @@ describe "User pages" do
       it { should have_content(m1.content) }
       it { should have_content(m2.content) }
       it { should have_content(user.microposts.count) }
+      it { should have_selector("h3", text: "Microposts (#{user.microposts.count})") }
     end
   end
 
