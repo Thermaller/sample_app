@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
     Micropost.where("user_id = ?", id)
   end
 
+  def user_id
+    @user_id
+  end
+
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64

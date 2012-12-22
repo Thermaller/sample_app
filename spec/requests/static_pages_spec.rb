@@ -33,8 +33,7 @@ describe "Static pages" do
       let(:user) { FactoryGirl.create(:user) }
       before do
         50.times do |i|
-          strmp = "mp #{i}"
-          FactoryGirl.create(:micropost, user: user, content: strmp)
+          FactoryGirl.create(:micropost, { user: user, content: "mp #{i}" })
         end
         sign_in user
         visit root_path
@@ -51,6 +50,11 @@ describe "Static pages" do
       it "should render the user's feed" do
         user.feed.paginate(page: 1).each do |mp|
           page.should have_selector("li##{mp.id}", text: mp.content)
+          if mp.user_id == user.user_id
+            page.should_not have_link("delete")
+          else
+            page.should have_link("delete")
+          end
         end
       end
 
