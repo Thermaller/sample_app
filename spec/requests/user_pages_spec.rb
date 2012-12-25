@@ -87,7 +87,7 @@ describe "User pages" do
       describe "pagination" do
 
         before(:all) do
-          30.times do |i|
+          50.times do |i|
             strmp = "mp #{i + 2}"
             FactoryGirl.create(:micropost, user: user, content: strmp)
           end
