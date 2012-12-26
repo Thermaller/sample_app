@@ -53,4 +53,9 @@ RSpec::Matchers.define :have_h1 do |title_text|
   match do |page|
     page.should have_selector('h1', text: title_text)
   end
+
+RSpec::Matchers.define :have_h3 do |h|
+  match do |page|
+    page.should have_selector('h3', text: h)
+  end
 end
