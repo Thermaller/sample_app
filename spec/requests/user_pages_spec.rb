@@ -82,8 +82,7 @@ describe "User pages" do
       it { should have_content(m1.content) }
       it { should have_content(m2.content) }
       it { should have_content(user.microposts.count) }
-      it { should have_selector('h3',
-                                text: "Microposts (#{user.microposts.count})") }
+      it { should have_h3("Microposts (#{user.microposts.count})") }
 
       describe "pagination" do
 
@@ -258,7 +257,7 @@ describe "User pages" do
       end
 
       it { should have_title(full_title("Following")) }
-      it { should have_selector("h3", text: "Following") }
+      it { should have_h3("Following") }
       it { should have_link(other_user.name, href: user_path(other_user)) }
     end
 
@@ -269,7 +268,7 @@ describe "User pages" do
       end
 
       it { should have_title(full_title("Followers")) }
-      it { should have_selector("h3", text: "Followers") }
+      it { should have_h3("Followers") }
       it { should have_link(user.name, href: user_path(user)) }
     end
   end
